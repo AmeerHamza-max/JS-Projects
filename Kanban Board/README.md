@@ -76,10 +76,6 @@ These are foundational skills expected from **Frontend / JavaScript Developers**
 
 ---
 
-## 📸 UI Preview
-
-> _(Add screenshots or a short GIF here for better recruiter engagement)_
-
 ---
 
 ## 🎯 Purpose of This Project
