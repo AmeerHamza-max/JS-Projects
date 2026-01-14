@@ -1,101 +1,136 @@
-*{
+/* RESET & BASE */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html,body{
+
+html, body {
     width: 100%;
     height: 100%;
-}
-html{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--bg-primary-color);
     color: var(--text-primary-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-main{
-    width: 100%;
 
-}
-main section{
+/* MAIN LAYOUT */
+main {
     width: 100%;
-    padding: var(--padding-2xl);
+    height: 100vh;
+}
+
+main section {
+    width: 100%;
+    height: 100%;
     display: flex;
     gap: var(--gutter-lg);
+    padding: var(--padding-md);
+    overflow: hidden; /* page scroll disabled */
 }
-main section .top{
-    display: flex;
-    align-items: center;
-    gap: var(--gutter-md);
-}
-.btn{
-    padding: var(--padding-sm) var(--padding-lg);
-    border: none;
-    outline: none;
-    border-radius: var(--border-radius-md);
-    background-color: var(--bg-active-color);
-    cursor: pointer;
-    color: var(--text-active-color);
 
-}
-#reset-btn{
-    background-color: var(--bg-danger-color);
-    color: var(--text-primary-color);
-}
-#download-btn{
-    background-color: var(--bg-success-color);
-    color: var(--text-primary-color);
-}
-main section .left{
+/* LEFT: CANVAS AREA */
+main section .left {
+    flex: 1; /* takes remaining space */
     display: flex;
     flex-direction: column;
-    gap: var(--gutter-lg);
-    width: 70%;
+    gap: var(--gutter-md);
     align-items: center;
+}
 
-}
-main section .right{
-    width: 30%;
-    background-color: var(--bg-secondary-color);
-    padding: var(--padding-lg);
-    border-radius: var(--border-radius-lg);
-}
-main section .bottom{
-    background-color: var(--bg-secondary-color);
+main section .bottom {
     width: 100%;
-    padding: var(--padding-2xl);
     aspect-ratio: 5/3;
+    background-color: var(--bg-secondary-color);
     border-radius: var(--border-radius-xl);
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
-main section .bottom .placeholder{
+
+.placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
     opacity: 0.6;
     gap: var(--gutter-md);
 }
-main section .bottom .placeholder i{
-    font-size: 10rem;
-}
-main section .bottom .placeholder p{
-    font-size: var(--font-size-lg);
-}
-main section .right .filter input{
-    width: 100%;
-    outline: none;
-    margin-top: var(--margin-sm);
-    appearance: none;
 
+.placeholder i {
+    font-size: 8rem;
 }
-main section .right{
+
+canvas {
+    max-width: 100%;
+    max-height: 70vh;
+    display: none;
+    border-radius: var(--border-radius-lg);
+    object-fit: contain;
+    background-color: #000;
+    position: absolute;
+}
+
+/* RIGHT PANEL: FILTERS + PRESETS */
+main section .right {
+    width: 340px;
+    min-width: 320px;
+    background-color: var(--bg-secondary-color);
+    padding: var(--padding-md);
+    border-radius: var(--border-radius-lg);
     display: flex;
     flex-direction: column;
-    gap: var(--gutter-lg);
-
+    gap: var(--gutter-md);
 }
-main section .right .filter input::-webkit-slider-thumb{
+
+/* BUTTONS */
+.btn {
+    padding: 0.4rem 0.9rem;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    background-color: var(--bg-active-color);
+    color: var(--text-active-color);
+    font-size: var(--font-size-sm);
+}
+
+#reset-btn {
+    background-color: var(--bg-danger-color);
+    color: var(--text-primary-color);
+}
+
+#download-btn {
+    background-color: var(--bg-success-color);
+    color: var(--text-primary-color);
+}
+
+main section .top {
+    display: flex;
+    align-items: center;
+    gap: var(--gutter-md);
+}
+
+/* FILTERS */
+main section .filters {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter-sm);
+    max-height: 45vh;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+main section .filter p {
+    font-size: var(--font-size-sm);
+    margin-bottom: 0.2rem;
+}
+
+main section .filter input {
+    width: 100%;
+    outline: none;
+    appearance: none;
+}
+
+main section .filter input::-webkit-slider-thumb {
     cursor: pointer;
     appearance: none;
     width: 17px;
@@ -104,19 +139,29 @@ main section .right .filter input::-webkit-slider-thumb{
     background-color: red;
     margin-top: -8px;
 }
-main section .right .filter input::-webkit-slider-runnable-track{
+
+main section .filter input::-webkit-slider-runnable-track {
     background-color: var(--bg-active-color);
     height: 3px;
     border-radius: var(--border-radius-sm);
+}
 
+/* PRESETS */
+.presets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gutter-sm);
+    max-height: 25vh;
+    overflow-y: auto;
 }
-main section .right .filters{
-    display: flex;
-    flex-direction: column;
-    gap: var(--gutter-md);
+
+.presets button {
+    padding: 0.4rem;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    background-color: var(--bg-active-color);
+    color: var(--text-active-color);
 }
-canvas{
-    background-color: red;
-    max-width: 700px;
-    max-height: 900px;
-}
+
+/* ROOT VARIABLES */
