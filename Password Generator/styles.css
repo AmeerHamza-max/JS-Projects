@@ -1,0 +1,127 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    font-family: 'Poppins', system-ui, sans-serif;
+}
+
+/* Card */
+.password-container{
+    background: rgba(255,255,255,0.95);
+    width: 420px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+}
+
+/* Title (optional) */
+.password-container h2{
+    margin-bottom: 20px;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+/* Input box */
+.input-container{
+    border: 2px solid #ddd;
+    padding: 12px 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    transition: 0.3s;
+}
+
+.input-container:focus-within{
+    border-color: #764ba2;
+    box-shadow: 0 0 0 4px rgba(118,75,162,0.15);
+}
+
+.input{
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 20px;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+/* Copy icon */
+.fa-copy{
+    font-size: 20px;
+    color: #764ba2;
+    transition: 0.3s;
+}
+
+.fa-copy:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color: #333;
+}
+
+/* Button */
+.btn{
+    margin-top: 18px;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+}
+
+.btn:active{
+    transform: scale(0.96);
+}
+
+/* Alert */
+.alert-container{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: linear-gradient(135deg,#43e97b,#38f9d7);
+    color: #222;
+    width: 280px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s ease;
+}
+
+.alert-container.active{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

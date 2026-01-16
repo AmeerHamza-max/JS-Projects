@@ -62,7 +62,7 @@ main section .bottom {
 
 canvas {
     max-width: 100%;
-    max-height: 70vh;
+    max-height: 100%;
     display: none;
     border-radius: var(--border-radius-lg);
     object-fit: contain;
@@ -164,4 +164,4 @@ main section .filter input::-webkit-slider-runnable-track {
     color: var(--text-active-color);
 }
 
-/* ROOT VARIABLES */
+
